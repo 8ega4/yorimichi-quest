@@ -19,7 +19,13 @@ export default defineConfig(() => {
       react(),
       VitePWA({
         registerType: "autoUpdate",
-        includeAssets: ["apple-touch-icon.png", "assets/yorimichi-quest-key-visual.jpg", "assets/washi-paper.jpg"],
+        includeAssets: [
+          "favicon-16x16.png",
+          "favicon-32x32.png",
+          "apple-touch-icon.png",
+          "assets/yorimichi-quest-key-visual.jpg",
+          "assets/washi-paper.jpg",
+        ],
         devOptions: { enabled: true },
         manifest: {
           name: "寄り道クエスト",
@@ -33,9 +39,14 @@ export default defineConfig(() => {
           theme_color: "#f7eedb",
           orientation: "portrait",
           icons: [
-            { src: "icon-192.png", sizes: "192x192", type: "image/png" },
-            { src: "icon-512.png", sizes: "512x512", type: "image/png" },
-            { src: "icon-512.png", sizes: "512x512", type: "image/png", purpose: "maskable" }
+            { src: "icon-192.png", sizes: "192x192", type: "image/png", purpose: "any" },
+            { src: "icon-512.png", sizes: "512x512", type: "image/png", purpose: "any" },
+            {
+              src: "icon-maskable-512.png",
+              sizes: "512x512",
+              type: "image/png",
+              purpose: "maskable",
+            },
           ]
         },
         workbox: {

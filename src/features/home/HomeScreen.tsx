@@ -1,8 +1,7 @@
-import { ArrowRight, FlagBanner, Footprints, MapPin, Sparkle } from "@phosphor-icons/react";
+import { ArrowRight, FlagBanner, Footprints, MapPin } from "@phosphor-icons/react";
 import { useLiveQuery } from "dexie-react-hooks";
 import { useNavigate } from "react-router-dom";
 import { BottomNav } from "../../components/BottomNav";
-import { BrandTitle } from "../../components/BrandTitle";
 import { publicAsset } from "../../lib/assets";
 import { db } from "../../lib/db";
 import { isSampleMode, withSampleMode } from "../../lib/sampleMode";
@@ -18,56 +17,63 @@ export function HomeScreen() {
 
   return (
     <div className="screen screen--with-nav home-screen">
+      <img
+        className="home-city-background"
+        src={publicAsset("assets/home-city-scene.jpg")}
+        alt=""
+        aria-hidden="true"
+      />
       <main className="screen__content home-content">
-        <BrandTitle />
-        <p className="home-message">今日は、いつもの道を<br />ちょっと外れよう。</p>
-
-        <figure className="hero-scene">
-          <img
-            src={publicAsset("assets/yorimichi-quest-key-visual.jpg")}
-            alt="黄色く光る寄り道の軌跡と、小さな旗が並ぶ紙細工の街"
-          />
-          <figcaption>
-            <Sparkle size={18} weight="fill" aria-hidden="true" />
-            いつもの街に、小さな発見を。
-          </figcaption>
-        </figure>
-
-        <section className="today-stats" aria-label="寄り道の記録">
-          <div>
-            <span>今日の発見</span>
-            <strong>{todayCount}<small>こ</small></strong>
+        <header className="home-hero-copy">
+          <div className="home-title-cluster">
+            <h1 className="home-title-image">
+              <span className="visually-hidden">寄り道クエスト</span>
+              <img
+                src={publicAsset("assets/yorimichi-title-art.jpg")}
+                alt=""
+                aria-hidden="true"
+              />
+            </h1>
           </div>
-          <div>
-            <span>これまでのクエスト</span>
-            <strong>{discoveries.length}<small>回</small></strong>
-          </div>
-        </section>
+          <p className="home-message">今日は、いつもの道を<br />ちょっと外れよう。</p>
 
-        <button
-          className="primary-button primary-button--hero"
-          type="button"
-          onClick={() => navigate(withSampleMode(activeAttempt ? "/quest" : "/choose"))}
-        >
-          <FlagBanner size={25} weight="fill" aria-hidden="true" />
-          <span>{activeAttempt ? "寄り道をつづける" : "今日の寄り道をはじめる"}</span>
-          <ArrowRight size={22} weight="bold" aria-hidden="true" />
-        </button>
-        {sample ? (
-          <aside className="location-mode-card">
-            <MapPin size={23} weight="fill" aria-hidden="true" />
+          <section className="today-stats" aria-label="寄り道の記録">
             <div>
-              <strong>サンプルモードでは位置情報の許可は表示されません。</strong>
-              <span>固定された安全な軌跡で体験しています。</span>
+              <span>今日の発見</span>
+              <strong>{todayCount}<small>こ</small></strong>
             </div>
-            <button type="button" onClick={() => navigate("/choose")}>実際の位置情報で試す</button>
-          </aside>
-        ) : (
-          <p className="privacy-hint">
-            <Footprints size={18} weight="fill" aria-hidden="true" />
-            位置情報は開始するまで使いません
-          </p>
-        )}
+            <div>
+              <span>これまでのクエスト</span>
+              <strong>{discoveries.length}<small>回</small></strong>
+            </div>
+          </section>
+        </header>
+
+        <div className="home-actions">
+          <button
+            className="primary-button primary-button--hero"
+            type="button"
+            onClick={() => navigate(withSampleMode(activeAttempt ? "/quest" : "/choose"))}
+          >
+            <FlagBanner size={25} weight="fill" aria-hidden="true" />
+            <span>{activeAttempt ? "寄り道をつづける" : "今日の寄り道をはじめる"}</span>
+            <ArrowRight size={22} weight="bold" aria-hidden="true" />
+          </button>
+          {sample ? (
+            <aside className="home-mode-note">
+              <MapPin size={20} weight="fill" aria-hidden="true" />
+              <div>
+                <strong>サンプルモードでは位置情報の許可は表示されません。</strong>
+                <button type="button" onClick={() => navigate("/choose")}>実際の位置情報で試す</button>
+              </div>
+            </aside>
+          ) : (
+            <p className="privacy-hint">
+              <Footprints size={18} weight="fill" aria-hidden="true" />
+              位置情報は開始するまで使いません
+            </p>
+          )}
+        </div>
       </main>
       <BottomNav />
     </div>
