@@ -356,9 +356,9 @@ fieldset {
 }
 
 .home-title-cluster {
-  width: calc(100% + 10px);
+  width: 100%;
   max-width: 410px;
-  margin: 0 -5px;
+  margin: 0 auto;
 }
 
 .home-title-image {

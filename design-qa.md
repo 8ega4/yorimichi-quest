@@ -6,7 +6,7 @@
 - Generated text-free scene asset: `/Users/8ega4/dev/yorimichi-quest/public/assets/home-city-scene.jpg`
 - Source title artwork: `/Users/8ega4/dev/yorimichi-quest/design-qa/yorimichi-title-art-source.jpg`
 - Transparent runtime title: `/Users/8ega4/dev/yorimichi-quest/public/assets/yorimichi-title.png`
-- Browser-rendered implementation: `/Users/8ega4/dev/yorimichi-quest/design-qa/home-v4-transparent-title-390.jpg`
+- Browser-rendered implementation: `/Users/8ega4/dev/yorimichi-quest/design-qa/home-v5-centered-title-390.jpg`
 - Side-by-side comparison: `/Users/8ega4/dev/yorimichi-quest/design-qa/home-v3-title-comparison.jpg`
 - Focused title comparison: `/Users/8ega4/dev/yorimichi-quest/design-qa/home-v3-title-focused.jpg`
 
@@ -49,6 +49,7 @@
 7. Replaced the opaque 1003 × 330 JPEG title crop with a transparent 918 × 259 PNG extracted from the same approved artwork.
 8. Removed the CSS multiply blend because the PNG now carries a real alpha channel. At 390 px it renders at about 364 × 103 px with no rectangular paper background.
 9. Rechecked 360, 390, and 430 px in the browser. The scene is visible through the logo spacing, no horizontal overflow occurs, and the browser console remains clear.
+10. Replaced the title container’s negative horizontal margin with `margin-inline: auto`. Browser measurements place the title center exactly at the viewport center at 360, 390, and 430 px.
 
 ## Accepted constraints
 
