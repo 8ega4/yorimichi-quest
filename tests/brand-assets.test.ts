@@ -31,7 +31,7 @@ describe("brand assets", () => {
     expect(html).toContain("%BASE_URL%favicon-32x32.png");
     expect(html).toContain("%BASE_URL%favicon-16x16.png");
     expect(html).toContain("%BASE_URL%apple-touch-icon.png");
-    expect(html).toContain('property="og:image" content="https://8ega4.github.io/yorimichi-quest/ogp.jpg"');
+    expect(html).toContain('property="og:image" content="https://8ega4.github.io/yorimichi-quest/ogp.jpg?v=2"');
     expect(html).toContain('name="twitter:card" content="summary_large_image"');
     expect(html).toContain('rel="canonical" href="https://8ega4.github.io/yorimichi-quest/"');
   });

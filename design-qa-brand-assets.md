@@ -36,6 +36,7 @@
 - Visual inspection at 1200 × 630 confirmed there is no title rectangle, center divider, floating road, or unexplained yellow stroke.
 - Sharp processing strips source metadata; exported PNG and JPEG files contain no location information.
 - `index.html` exposes favicon, Apple icon, Open Graph, Twitter Card, canonical, dimensions, and alt metadata.
+- The Open Graph and Twitter image URLs use `?v=2` so social crawlers do not reuse the rejected V1 cache.
 - The PWA manifest exposes separate `any` and `maskable` icon entries.
 - Browser inspection found no console errors or warnings and confirmed the expected metadata.
 - Local HTTP checks returned `200` with correct image content types for every asset.
