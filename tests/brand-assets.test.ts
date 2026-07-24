@@ -43,4 +43,12 @@ describe("brand assets", () => {
     expect(bytes[1]).toBe(0xd8);
     expect(bytes.byteLength).toBeGreaterThan(50_000);
   });
+
+  it("ships the TOP title as a transparent PNG", async () => {
+    const path = "public/assets/yorimichi-title.png";
+    const bytes = await readFile(resolve(root, path));
+
+    await expect(readPngSize(path)).resolves.toEqual({ width: 918, height: 259 });
+    expect(bytes.includes(Buffer.from("tRNS"))).toBe(true);
+  });
 });

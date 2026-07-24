@@ -4,8 +4,9 @@
 
 - Source visual truth: `/Users/8ega4/Downloads/生成画像2.png`
 - Generated text-free scene asset: `/Users/8ega4/dev/yorimichi-quest/public/assets/home-city-scene.jpg`
-- Extracted title artwork: `/Users/8ega4/dev/yorimichi-quest/public/assets/yorimichi-title-art.jpg`
-- Browser-rendered implementation: `/Users/8ega4/dev/yorimichi-quest/design-qa/home-v3-title-image-390.jpg`
+- Source title artwork: `/Users/8ega4/dev/yorimichi-quest/design-qa/yorimichi-title-art-source.jpg`
+- Transparent runtime title: `/Users/8ega4/dev/yorimichi-quest/public/assets/yorimichi-title.png`
+- Browser-rendered implementation: `/Users/8ega4/dev/yorimichi-quest/design-qa/home-v4-transparent-title-390.jpg`
 - Side-by-side comparison: `/Users/8ega4/dev/yorimichi-quest/design-qa/home-v3-title-comparison.jpg`
 - Focused title comparison: `/Users/8ega4/dev/yorimichi-quest/design-qa/home-v3-title-focused.jpg`
 
@@ -31,7 +32,7 @@
 | P1 | Layout and hierarchy | Pass — the source sequence of warm paper sky, oversized logo, dense miniature town, luminous route, and lower river is retained. |
 | P1 | Image quality | Pass — the full-bleed 1003 × 1568 scene remains sharp at 390 px and uses a natural center crop without stretching. |
 | P1 | Reference motifs | Pass — sun, paper clouds, young-green foliage, teal/orange roofs, red flags, yellow route, and sparkles are present. |
-| P1 | Title fidelity | Pass — the visible title is the exact source artwork, including its hand-cut letterforms, cream outline, paper shadow, sparkle, and flag. |
+| P1 | Title fidelity | Pass — the visible title preserves the source letterforms, cream outline, paper shadow, sparkle, and flag while allowing the TOP scene to show through every gap around the letters. |
 | P2 | Accessibility | Pass — a visually hidden `h1` keeps the product name available to screen readers while the decorative raster title is ignored by assistive technology. |
 | P2 | Spacing and rhythm | Pass — title, message, counters, CTA, mode note, and navigation do not overlap at 390 × 844; browser overflow checks also pass at 360, 390, and 430 px. |
 | P2 | Color and tokens | Pass — warm cream, orange, young green, teal, yellow, and charcoal map directly to the approved product tokens. |
@@ -45,10 +46,13 @@
 4. Replaced the visible HTML letter treatment with the extracted artwork and retained a visually hidden semantic `h1`.
 5. Captured the settled implementation at 360, 390, and 430 px. The image measures about 364 × 120 px at 390 px and produces no horizontal overflow.
 6. Compared the normalized source and implementation in both full-view and focused composites. No actionable P0, P1, or P2 differences remain.
+7. Replaced the opaque 1003 × 330 JPEG title crop with a transparent 918 × 259 PNG extracted from the same approved artwork.
+8. Removed the CSS multiply blend because the PNG now carries a real alpha channel. At 390 px it renders at about 364 × 103 px with no rectangular paper background.
+9. Rechecked 360, 390, and 430 px in the browser. The scene is visible through the logo spacing, no horizontal overflow occurs, and the browser console remains clear.
 
 ## Accepted constraints
 
-- The visible title is intentionally raster artwork per the user’s latest direction. It is local-only, contains no location metadata, and is paired with semantic HTML text for accessibility.
+- The visible title is intentionally transparent raster artwork per the user’s latest direction. It contains no location metadata and is paired with semantic HTML text for accessibility.
 - Product controls necessarily occupy part of the town image; they use compact paper surfaces so the route and miniature scene remain the visual focus.
 
 ## Follow-up polish

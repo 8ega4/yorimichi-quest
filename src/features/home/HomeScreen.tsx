@@ -29,7 +29,7 @@ export function HomeScreen() {
             <h1 className="home-title-image">
               <span className="visually-hidden">寄り道クエスト</span>
               <img
-                src={publicAsset("assets/yorimichi-title-art.jpg")}
+                src={publicAsset("assets/yorimichi-title.png")}
                 alt=""
                 aria-hidden="true"
               />
